@@ -1,0 +1,70 @@
+#include <bits/stdc++.h>
+#define endl '\n'
+#define strim stringstream
+#define ll long long int
+#define inf INT_MAX
+#define negInf INT_MIN
+#define mod %
+#define find_array_max *max_element(arr.begin(), arr.end());
+#define find_array_min *min_element(arr.begin(), arr.end());
+#define pii pair<int, int>
+#define pll pair<ll, ll>
+#define left_range(i, x, y) for (int i = x; i <= y; i++)
+#define right_range(i, x, y) for (int i = y; i >= x; i--)
+void hey_output()
+{
+#ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+#endif
+}
+using namespace std;
+const int N = 1e5 + 7;
+// O(nlogn)
+static void go_on()
+{
+
+    /*
+    input exapmle
+    5
+    10 20 9 12 30
+    */
+    vector<int> v;
+    int n;
+    cin >> n;
+    for (int i = 0; i < n; ++i)
+    {
+        int x;
+        cin >> x;
+        v.push_back(x);
+        int cur_idx = v.size() - 1;
+        while (cur_idx != 0)
+        {
+            int par_idx = (cur_idx - 1) / 2; // parent find
+            if (v[par_idx] < v[cur_idx])
+                swap(v[par_idx], v[cur_idx]);
+            else
+                break;
+            cur_idx = par_idx;
+        }
+    }
+
+    // print heap
+    for (auto u : v)
+        cout << u << " ";
+}
+
+int32_t main()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    hey_output();
+    ll t = 1;
+    // cin >> t;
+    while (t--)
+    {
+        go_on();
+    }
+
+    return 0;
+}
